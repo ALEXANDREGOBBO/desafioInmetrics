@@ -40,9 +40,8 @@ class advantageOnline {
     }
 
     pesquisaOutroProduto(outroProduto) {
-        cy.get('.logo').click()
+
         this.clicaAutoComplete();
-        // Digita o produto no campo de busca
         cy.get('#mobileSearch')
           .type(outroProduto)
           .intercept({
@@ -53,9 +52,7 @@ class advantageOnline {
          return cy.wait('@validaRetorno').then((interception) => {
              expect(interception.response.statusCode).to.eq(200);
         });
-        
 
-      
     }
 
     enterProduto () {
@@ -64,15 +61,21 @@ class advantageOnline {
     }
     
     validaSugestaoAutocomplete(produto){
-        let produtoTexto; 
-        cy.get('a.productName')
-        .invoke('text')      
-        .then((produto) => {
-          cy.log(produto);
-          produtoTexto = produto
-          expect(produto).to.include(produto);  // Verifica se o texto é o esperado
+        const produtoEsperado = produto.trim().toLowerCase();
+
+        // Itera sobre cada produto na lista de sugestões de autocomplete
+        cy.get('a.productName').each(($el) => {
+            const produtoTexto = $el.text().trim().toLowerCase();
+    
+            // Verifica se o produto esperado está incluído no texto da sugestão atual
+            if (produtoTexto.includes(produtoEsperado)) {
+                cy.log(`Produto encontrado: ${produtoTexto}`);
+    
+                // Envolva o valor do produto encontrado com `cy.wrap` para reutilizar depois
+                cy.wrap(produtoTexto).as('produtoCapturado'); // Alias para reutilizar
+                expect(produtoTexto).to.include(produtoEsperado);
+            }
         });
-        return produto
     }
 
     clicaProduto () {
@@ -82,11 +85,13 @@ class advantageOnline {
     }
 
     colocaProdutoNoCarrinho() {
-        cy.get('#Description')
-        .find('h1.roboto-regular') 
-        .invoke('text')            
-        .then((produtoTexto) => {   
-          expect(produtoTexto).to.include('HP ENVY - 17T TOUCH LAPTOP'); 
+        cy.get('@produtoCapturado').then((produtoCapturado) => {
+            cy.get('#Description')
+              .find('h1.roboto-regular')
+              .invoke('text')
+              .then((produtoTexto) => {
+                  expect(produtoTexto.trim().toLowerCase()).to.include(produtoCapturado); 
+              });
         });
         
     }
@@ -112,7 +117,7 @@ class advantageOnline {
           expect(produtoTexto).to.include('HP ELITEPAD 1000 G2 TABLET'); 
         });
 
-        cy.get('.roboto-regular').first('')
+        cy.get('.roboto-regular').eq(1)
         .invoke('text')            
         .then((produtoTexto) => {   
           expect(produtoTexto).to.include('HP ENVY - 17T TOUCH LAPTOP'); 

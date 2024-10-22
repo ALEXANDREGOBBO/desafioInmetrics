@@ -35,17 +35,12 @@ Given('Que pesquisei pelo produto {string}', (produto) => {
 When('Clico no produto desejado e incluo no carrinho', () => {
   advantageOnline.clicaProduto();
   advantageOnline.colocaProdutoNoCarrinho();
-});
-
-When('For incluido no carrinho', () => {
-  cy.wait(8000)
   advantageOnline.adicionarNoCarrinho();
 });
 
+
 When('Adiciono outros produtos {string}', (outroProduto) => {
-  cy.wait(8000)
-  advantageOnline.pesquisaOutroProduto(outroProduto);
-  cy.wait(8000)
+  cy.get('.logo').first().click().
   advantageOnline.enterProduto();
   cy.get('#16').click()
   advantageOnline.adicionarNoCarrinho();

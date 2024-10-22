@@ -17,7 +17,6 @@ Feature: Validacao ecommerce
   Scenario: Inclui um produto no carrinho
     Given Que pesquisei pelo produto "<produto>"
     When Clico no produto desejado e incluo no carrinho
-    And For incluido no carrinho
     And Adiciono outros produtos "<outroProduto>"
     Then Verifico se esta na tela de pagamento
 
