@@ -32,6 +32,7 @@ Instalação do ambiente:
 
   
 Clone o repositório
+
 Abra o terminal e execute o comando abaixo para clonar o repositório:
 
     git clone https://github.com/ALEXANDREGOBBO/desafioInmetrics)
