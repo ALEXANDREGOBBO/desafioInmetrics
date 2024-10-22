@@ -8,8 +8,7 @@ Pré-requisitos
 
 Antes de começar, certifique-se de ter o seguinte software instalado:
 
-  Node.js (v12 ou superior)
-  Git
+  Node.js (v12 ou superior) | Git
 
 Dependências adicionais:
   Este projeto também utiliza os seguintes pacotes adicionais:
