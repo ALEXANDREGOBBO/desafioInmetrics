@@ -1,6 +1,6 @@
 Desafio Inmetrics
 
-Descrição
+Descrição:
 
 Este projeto foi desenvolvido para ser apresentado no desafio técnico do processo seletivo da empresa inmetrics.
 
@@ -14,8 +14,8 @@ Antes de começar, certifique-se de ter o seguinte software instalado:
 Dependências adicionais:
   Este projeto também utiliza os seguintes pacotes adicionais:
 
-    Cypress Cucumber Preprocessor
-    Cypress Esbuild Preprocessor
+    Cypress cucumber preprocessor
+    Cypress esbuild preprocessor
     
 Instalação do ambiente:
   Para installar o cypress execute o comando: 
