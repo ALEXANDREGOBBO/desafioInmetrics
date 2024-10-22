@@ -17,6 +17,7 @@ Dependências adicionais:
     Cypress esbuild preprocessor
     
 Instalação do ambiente:
+
   Para installar o cypress execute o comando: 
               
       npm install cypress --save-dev
