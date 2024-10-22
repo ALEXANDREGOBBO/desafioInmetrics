@@ -63,16 +63,16 @@ class advantageOnline {
     validaSugestaoAutocomplete(produto){
         const produtoEsperado = produto.trim().toLowerCase();
 
-        // Itera sobre cada produto na lista de sugestões de autocomplete
+     
         cy.get('a.productName').each(($el) => {
             const produtoTexto = $el.text().trim().toLowerCase();
     
-            // Verifica se o produto esperado está incluído no texto da sugestão atual
+        
             if (produtoTexto.includes(produtoEsperado)) {
                 cy.log(`Produto encontrado: ${produtoTexto}`);
     
-                // Envolva o valor do produto encontrado com `cy.wrap` para reutilizar depois
-                cy.wrap(produtoTexto).as('produtoCapturado'); // Alias para reutilizar
+               
+                cy.wrap(produtoTexto).as('produtoCapturado'); 
                 expect(produtoTexto).to.include(produtoEsperado);
             }
         });

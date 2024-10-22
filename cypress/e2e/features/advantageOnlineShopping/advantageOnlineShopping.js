@@ -50,4 +50,39 @@ Then('Verifico se esta na tela de pagamento', () => {
   advantageOnline.verificoSeEstaNaPaginaDePagamento()
 })
 
+// Cenário 3 validacao da API:
+
+// URL da API
+const apiUrl = 'https://advantageonlineshopping.com/catalog/api/v1/products/search?name=TABLETS&quantityPerEachCategory=100';
+
+Given('Que eu realizo uma requisição para a API de busca de produtos', () => {
+  
+});
+
+When('Eu procuro por produtos da categoria "TABLETS"', () => {
+});
+
+
+  Then('O valor do campo "categoryName" deve ser "TABLETS"', () => {
+    cy.request({
+      method: 'GET',
+      url: 'https://advantageonlineshopping.com/catalog/api/v1/products/search?name=TABLETS&quantityPerEachCategory=100',
+    }).should(({ status, body }) => {
+      expect(status).to.eq(200);
+      
+      expect(body).to.be.an('array').that.is.not.empty;
+    
+      const firstCategory = body[0]; 
+      
+      expect(firstCategory.categoryName).to.eq('TABLETS');
+    
+      firstCategory.products.forEach(product => {
+        expect(product.categoryId).to.eq(3); //
+        expect(product.productName.toLowerCase()).to.contain('tablet');
+        
+      });
+    });
+   
+  });
+
 
