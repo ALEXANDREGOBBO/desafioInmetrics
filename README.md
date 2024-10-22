@@ -17,28 +17,34 @@ Dependências adicionais:
     Cypress Cucumber Preprocessor
     Cypress Esbuild Preprocessor
     
-Instalação do Ambiente
-  Execute o comando: npm install cypress --save-dev | para installar o cypress
-  Execute o comando: npm install @badeball/cypress-cucumber-preprocessor --save-dev |  para installar o cucumber preprocessor
-    Para melhorar o desempenho e garantir que o preprocessor funcione corretamente, é possivel instalar o @bahmutov/cypress-esbuild-preprocessor: npm install @bahmutov/cypress-esbuild-preprocessor --save-dev
+Instalação do ambiente:
+  Para installar o cypress execute o comando: 
+              
+      npm install cypress --save-dev
+  
+  Para installar o cucumber preprocessor execute o comando: 
+  
+    npm install @badeball/cypress-cucumber-preprocessor --save-dev
+    
+  Para melhorar o desempenho e garantir que o preprocessor funcione corretamente, é possivel instalar o @bahmutov/cypress-esbuild-preprocessor:
+  
+    npm install @bahmutov/cypress-esbuild-preprocessor --save-dev
 
   
 Clone o repositório
 Abra o terminal e execute o comando abaixo para clonar o repositório:
-git clone https://github.com/ALEXANDREGOBBO/desafioInmetrics)
+
+    git clone https://github.com/ALEXANDREGOBBO/desafioInmetrics)
 
 Instale as dependências
 Com o Node.js e npm já instalados, execute o comando abaixo para instalar todas as dependências do projeto, conforme especificado no arquivo package.json:
 
-npm cypress open
+    npx cypress open
 
-Configuração de Ambientes de Teste
-
+Configuração do ambientes de teste:
 
 1. Executar Cypress via Interface Gráfica (modo interativo)
 
-
-npx cypress open
-Isso abrirá a interface gráfica do Cypress, onde você pode selecionar e rodar os testes.
+        npx cypress open
 
 Entao basta somente realizar os testes
