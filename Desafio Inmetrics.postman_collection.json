@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "da439b9b-9147-4aec-9888-5c5ba6c89c2c",
+		"name": "Desafio Inmetrics",
+		"description": "Esta collection tem como objetivo realizar o desafio técnico proposto no processo seletivo pela empresa Inmetrics\n\nA collection conta apenas com uma requisição na API:\n\n- [https://advantageonlineshopping.com/catalog/api/v1](https://advantageonlineshopping.com/catalog/api/v1EndFragment)\n    \n\nNa chamada do metódo \"GET\" é passado 2 \"keys\" sendo elas:\n\n- Name: para o nome produto como \"TABLET\"\n    \n- quantityPerReachCategory: Para quantos produstos espero de retorno ao realizar a requisição como: 1 produto 2 produtos ou 3 produtos.\n    \n\n<img src=\"https://content.pstmn.io/aad87028-ed1f-4a98-bc7b-bc6523027e58/aW1hZ2UucG5n\" width=\"985\" height=\"273\">\n\nAo realizar a requisição então é fornecido o retorno da API:\n\n<img src=\"https://content.pstmn.io/20df8d88-d711-4130-8bf8-4dce148172eb/aW1hZ2UucG5n\" width=\"577\" height=\"300\">\n\n**Com o retorno da API temos os resultados dos testes implantados:**\n\n<img src=\"https://content.pstmn.io/bdbe288e-1534-4475-8cbb-7cf7fad1e894/aW1hZ2UucG5n\" width=\"988\" height=\"305\">\n\nOs testes são definidos em \"Script\" sendo eles:\n\nStartFragmentpm.test(\"Status code deve ser 200\", function () { pm.response.to.have.status(200);});\n\n(Retorno do response é esperado ter o o código 200 por padrão \"OK\")\n\n(Cria variaveis necessárias)  \nvar pesquisaNome = pm.request.url.query.find(q => q.key === \"name\").value;  \nvar jsonData = pm.response.json();\n\n(Realiza a busca a partir do \"categoryName\" pelo primeiro index do array retornado utilizando o LowerCase para não ter problemas com a diferença entre letras maisculas e minusculas\n\npm.test(\"Nome categoria reflete o nome da busca\", function () { var categoryName = jsonData\\[0\\].categoryName;\n\npm.expect(categoryName.toLowerCase()).to.eql(pesquisaNome.toLowerCase());});  \nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29093188"
+	},
+	"item": [
+		{
+			"name": "GET PRODUTOS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code deve ser 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var pesquisaNome = pm.request.url.query.find(q => q.key === \"name\").value;",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Nome categoria reflete o nome da busca\", function () {",
+							"    var categoryName = jsonData[0].categoryName;",
+							"    pm.expect(categoryName.toLowerCase()).to.eql(pesquisaNome.toLowerCase());",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://advantageonlineshopping.com/catalog/api/v1/products/search?name=TABLETS&quantityPerEachCategory=100",
+					"protocol": "https",
+					"host": [
+						"advantageonlineshopping",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"api",
+						"v1",
+						"products",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "TABLETS"
+						},
+						{
+							"key": "quantityPerEachCategory",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
